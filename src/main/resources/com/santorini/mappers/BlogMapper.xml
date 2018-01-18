@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.santorini.dao.BlogDao">
+
+	<resultMap type="Blog" id="BlogResult">
+		<result property="id" column="id"/>
+		<result property="title" column="title"/>
+		<result property="summary" column="summary"/>
+		<result property="releaseDate" column="releaseDate"/>
+		<result property="clickHit" column="clickHit"/>
+		<result property="replyHit" column="replyHit"/>
+		<result property="content" column="content"/>
+		<result property="keyWord" column="keyWord"/>
+		
+		<association property="blogType" column="typeId" select="com.santorini.dao.BlogTypeDao.findById"></association>		
+	</resultMap>
+	
+	<select id="countList" resultMap="BlogResult">
+		SELECT DATE_FORMAT(releaseDate,'%Y/%m/') AS releaseDateStr,COUNT(*) AS blogCount  FROM t_blog GROUP BY DATE_FORMAT(releaseDate,'%Y/%m/') ORDER BY DATE_FORMAT(releaseDate,'%Y/%m/') DESC;
+	</select>
+	
+	<select id="list" parameterType="Map" resultMap="BlogResult">
+		select * from t_blog
+		<where>
+			<if test="title!=null and title!='' ">
+				and title like #{title}
+			</if>
+			<if test="typeId!=null and typeId!='' ">
+				and typeId=#{typeId}
+			</if>
+			<if test="releaseDateStr!=null and releaseDateStr!='' ">
+				and DATE_FORMAT(releaseDate,'%Y/%m/')=#{releaseDateStr}
+			</if>
+		</where>		
+		order by releaseDate desc
+		<if test="start!=null and size!=null">
+			limit #{start},#{size}
+		</if>
+	</select>
+	
+	<select id="getTotal" parameterType="Map" resultType="Long">
+		select count(*) from t_blog
+		<where>
+			<if test="title!=null and title!='' ">
+				and title like #{title}
+			</if>
+			
+			<if test="typeId!=null and typeId!='' ">
+				and typeId=#{typeId}
+			</if>
+			<if test="releaseDateStr!=null and releaseDateStr!='' ">
+				and DATE_FORMAT(releaseDate,'%Y/%m/')=#{releaseDateStr}
+			</if>
+		</where>
+	</select>
+	
+	<select id="findById" parameterType="Integer" resultMap="BlogResult">
+		select * from t_blog where id=#{id}
+	</select>
+	
+	<update id="update" parameterType="Blog">
+		update t_blog
+		<set>
+			<if test="title!=null and title!=''">
+				title=#{title},
+			</if>
+			<if test="summary!=null and summary!=''">
+				summary=#{summary},
+			</if>
+			<if test="content!=null and content!=''">
+				content=#{content},
+			</if>
+			<if test="blogType.id!=null">
+				typeId=#{blogType.id},
+			</if>	
+			<if test="clickHit!=null">
+				clickHit=#{clickHit},
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+	
+	<insert id="add" parameterType="Blog">
+		insert into t_blog values(null,#{title},#{summary},now(),0,0,#{content},#{blogType.id},#{keyWord})
+	</insert>
+	
+	<delete id="delete" parameterType="Integer">
+		delete from t_blog where id=#{id}
+	</delete>
+	
+</mapper> 

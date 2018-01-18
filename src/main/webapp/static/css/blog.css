@@ -1,0 +1,184 @@
+.data_list{
+
+}
+
+.data_list .data_list_title{
+	font-family: Microsoft Yahei,Verdana,Arial,Helvetica,sans-serif;
+	font-size: 15px;
+	font-weight: bold;
+	border-bottom: 1px solid #E5E5E5;
+	padding-bottom: 10px;
+	padding-top: 20px;
+	padding-left: 15px;
+	color: #808080;
+}
+
+.data_list .data_list_title img{
+	margin-top: 1px;
+	vertical-align: top;
+}
+
+.data_list .datas ul {
+	list-style-type: none;
+	padding-left: 3px;
+}
+
+.data_list .datas ul li {
+	margin-top: 10px;
+}
+
+.data_list .data_list_title .datas{
+	padding: 5px;
+}
+
+.datas .date ,.datas .title {
+	display:block;
+	font-family: Microsoft Yahei,Verdana,Arial,Helvetica,sans-serif;
+	font-size: 14px;
+}
+
+
+.datas .date a{
+	color: #A9A9A9;
+	font-weight: bold;
+}
+
+.datas .title a{
+	  color: #37c6c0;
+	  font-weight: normal;
+}
+
+.datas .summary{
+	display:block;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	line-height: 19.5px;
+	font-size: 13px;
+	color:#808080;
+}
+
+.datas .img{
+	display:block;
+	clear:both;
+}
+
+.datas .img{
+	padding:10px;
+	padding-left:0px;
+	max-height: 150px;
+	max-width:300px;
+}
+
+.datas .info{
+	display:block;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	line-height: 18px;
+	float: right;
+	font-size: 12px;
+	color:#808080;
+}
+
+.data_list .user_image{
+	text-align: center;
+}
+
+.data_list .user_image img{
+	padding-top:10px;
+	width: 200px;;
+	height: 250px;;
+}
+
+.data_list .nickName , .data_list .userSign{
+	text-align: center;
+}
+.data_list .blog_title{
+	margin-top:20px;
+	text-align: center;
+}
+
+.data_list .blog_info{
+	text-align: center;
+}
+
+.data_list .blog_content{
+	margin-top:20px;
+	padding-bottom: 30px;
+}
+
+
+.data_list .commentDatas{
+	padding: 10px;
+}
+
+.data_list .commentDatas .comment{
+	margin-top:10px;
+	margin-bottom: 5px;
+	padding-bottom:15px;
+	border-bottom: 1px dotted gray;
+}
+
+.data_list .commentDatas .comment font,.data_list .commentDatas .otherComment font{
+	font-weight: bold;
+}
+
+
+
+.data_list .commentDatas .otherComment{
+	display: none;
+}
+
+.imga {
+	max-width: 100%;
+}
+
+
+.data_list .data_list_title .datas{
+	color:#1E90FF;
+}
+
+.menu a:link{
+font-family:Microsoft YaHei,Verdana, Arial, Helvetica, sans-serif;
+padding-top: 5px;
+font-size: 14px;
+display:block;
+font-weight:lighter;
+width:180px;
+text-align:left;
+padding:4px;
+text-decoration:none;
+color:#808080;
+}
+.menu a:visited{
+font-family:Microsoft YaHei,Arial, Helvetica, sans-serif,Verdana ;
+padding-top: 5px;
+font-size: 14px;
+display:block;
+font-weight:lighter;
+width:180px;
+text-align:left;
+padding:4px;
+text-decoration:none;
+color:#808080;
+}
+.menu a:hover{
+background-color:#DCDCDC;
+}
+.menu a:active{
+background-color:#DCDCDC;
+}
+
+.foot a:link {color:#37c6c0;}
+.foot a:visited {color:#37c6c0;}
+.foot a:hover {color:#37c6c0;}
+.foot a:active {color:#37c6c0;}
+
+
+
+.background{
+	background-image: url(/static/images/seigaiha.jpg);
+}
+.footbackground{
+	background-image: url(/static/images/foot.jpg);
+}
+.container{
+	background-image: url(/static/images/background.jpg);
+}

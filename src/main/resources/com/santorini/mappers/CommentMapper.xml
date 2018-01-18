@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.santorini.dao.CommentDao">
+
+	<resultMap type="Comment" id="CommentResult">
+		<result property="id" column="id"/>
+		<result property="userIp" column="userIp"/>
+		<result property="content" column="content"/>
+		<result property="commentDate" column="commentDate"/>
+		<result property="state" column="state"/>
+		<association property="blog" column="blogId" select="com.santorini.dao.BlogDao.findById"></association>
+	</resultMap>
+	
+	<select id="list" parameterType="Map" resultMap="CommentResult">
+		select * from t_comment
+		<where>
+			<if test="blogId!=null">
+				and blogId=#{blogId}
+			</if>
+			<if test="state!=null">
+				and state=#{state}
+			</if>
+		</where>
+		order by commentDate desc
+	</select>
+	
+
+	
+
+</mapper> 
